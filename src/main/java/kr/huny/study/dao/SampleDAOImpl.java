@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import kr.huny.study.vo.tbBoardVO;	
 
 @Repository("sampleDAO")
-public class SampleDAOImpl implements SampleDAO {
+public class SampleDAOImpl extends AbstractDAO<tbBoardVO> implements SampleDAO {
 	
 	@Autowired
 	SqlSession session;
@@ -19,6 +19,6 @@ public class SampleDAOImpl implements SampleDAO {
 	@Override
 	public List<tbBoardVO> selectBoardList() throws Exception {
 		// TODO Auto-generated method stub
-		return session.selectList(namespace + "selectBoardList");
+		return selectList(namespace + "selectBoardList");
 	}
 }
