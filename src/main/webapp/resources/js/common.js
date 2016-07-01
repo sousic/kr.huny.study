@@ -12,6 +12,7 @@ function gfn_isNull(str) {
 function ComSubmit(opt_formId) {
     this.formId = gfn_isNull(opt_formId) == true ? "commonForm" : opt_formId;
     this.url = "";
+	this.method = "get";
      
     if(this.formId == "commonForm"){
         $("#commonForm")[0].reset();
@@ -20,6 +21,10 @@ function ComSubmit(opt_formId) {
     this.setUrl = function setUrl(url){
         this.url = url;
     };
+
+	this.setMethod = function SetMethod(method) {
+		this.method = methid;
+	} 
      
     this.addParam = function addParam(key, value){
         $("#"+this.formId).append($("<input type='hidden' name='"+key+"' id='"+key+"' value='"+value+"' >"));
@@ -28,7 +33,7 @@ function ComSubmit(opt_formId) {
     this.submit = function submit(){
         var frm = $("#"+this.formId)[0];
         frm.action = this.url;
-        frm.method = "post";
+        frm.method = this.method;
         frm.submit();   
     };
 }

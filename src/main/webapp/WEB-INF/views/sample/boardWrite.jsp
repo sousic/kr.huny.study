@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/include/include-body.jspf" %>
+<%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
 	<form id="frm">
@@ -33,8 +33,29 @@
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
     <script type="text/javascript">
         $(document).ready(function(){
-                     
+        	$("#list").on("click", function(e){ //목록으로 버튼
+                e.preventDefault();
+                fn_openBoardList();
+            });
+             
+            $("#write").on("click", function(e){ //작성하기 버튼
+                e.preventDefault();
+                fn_insertBoard();
+            });
         });
+         
+        function fn_insertBoard(){
+            var comSubmit = new ComSubmit("frm");
+            comSubmit.setUrl("<c:url value='/sample/boardWrite' />");
+            comSumit.SetMethod("post");
+            comSubmit.submit();
+        }
+        
+        function fn_openBoardList(){
+            var comSubmit = new ComSubmit();
+            comSubmit.setUrl("<c:url value='/sample/boardList' />");
+            comSubmit.submit();
+        }
     </script>
 </body>
 </html>
