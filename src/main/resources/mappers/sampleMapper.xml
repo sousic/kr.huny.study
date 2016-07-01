@@ -10,6 +10,8 @@
 	    crea_dtm
 	from
 	    tb_board
+	where
+		del_gb = 'N'
 	order by idx desc
 	]]>
 	</select>
